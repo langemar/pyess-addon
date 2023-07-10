@@ -11,8 +11,6 @@ arch:
   - amd64
   - i386
 init: false
-map:
-  - share:rw
 options:
   ess_host: "127.0.0.1"
   ess_password: "ess_password"
