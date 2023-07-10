@@ -23,6 +23,16 @@ mqtt_user=$(bashio::services mqtt "username")
 mqtt_password=$(bashio::services mqtt "password")
 ess_update_interval=$(bashio::config 'ess_update_interval')
 
+## Enable mdns autodiscovery if ess_host is not provided
+if [[ "${ess_host}" == "null" ]];
+then
+    bashio::log.info "Will use mdns autodiscovery for ess host and logging to mqtt server ${mqtt_host}"
+    ess_host=""
+else
+    bashio::log.info "Will use ess ${ess_host} and logging to mqtt server ${mqtt_host}"
+    ess_host="--ess_host ${ess_host}"
+fi
+
 ## Don't use a default value for bashio, instead use default value by essmqtt.py
 if [[ "${ess_update_interval}" == "null" ]];
 then
@@ -34,7 +44,7 @@ fi
 bashio::log.info "done reading config"
 
 ## Print the message the user supplied, defaults to "Hello World..."
-bashio::log.info "Starting pyss with ess ${ess_host}, logging to mqtt server ${mqtt_host}"
+bashio::log.info "Starting pyess..."
 
 ## Run your program
-/usr/bin/essmqtt --ess_password ${ess_password} --mqtt_server ${mqtt_host} --mqtt_user ${mqtt_user} --mqtt_password ${mqtt_password} --ess_host ${ess_host} ${ess_update_interval} --hass_autoconfig_sensors ${sensors}
+/usr/bin/essmqtt --ess_password ${ess_password} --mqtt_server ${mqtt_host} --mqtt_user ${mqtt_user} --mqtt_password ${mqtt_password} ${ess_host} ${ess_update_interval} --hass_autoconfig_sensors ${sensors}
