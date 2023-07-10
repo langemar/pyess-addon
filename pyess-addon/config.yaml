@@ -22,7 +22,7 @@ options:
 schema:
   ess_host: "str?"
   ess_password: "str"
-  ess_sensors: "str?"
+  ess_sensors: "str"
   ess_update_interval: "int(1,600)?"
 services:
   - "mqtt:need"
