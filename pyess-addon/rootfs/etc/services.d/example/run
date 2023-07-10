@@ -18,9 +18,9 @@ bashio::log.info "reading config"
 ess_host=$(bashio::config 'ess_host')
 sensors=$(bashio::config 'ess_sensors')
 ess_password=$(bashio::config 'ess_password')
-mqtt_host=$(bashio::services mqtt "host")
-mqtt_user=$(bashio::services mqtt "username")
-mqtt_password=$(bashio::services mqtt "password")
+mqtt_host=$(bashio::services mqtt 'host')
+mqtt_user=$(bashio::services mqtt 'username')
+mqtt_password=$(bashio::services mqtt 'password')
 ess_update_interval=$(bashio::config 'ess_update_interval')
 
 bashio::log.info "done reading config"
