@@ -3,7 +3,7 @@ name: pyess add-on
 version: "2.0.5"
 slug: pyess-addon
 description: pyess/essmqtt add-on
-url: "https://github.com/gluap/pyess-addon/tree/main/example"
+url: "https://github.com/gluap/pyess-addon/tree/main/pyess-addon"
 arch:
   - armhf
   - armv7
